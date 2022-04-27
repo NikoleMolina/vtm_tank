@@ -1,3 +1,9 @@
 body{
-    background-color: rgb(224, 210, 79);
+    background-color: rgb(163, 162, 153);
+}
+
+h1 {
+    color: #48e8a8;
+    opacity: .87;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', Arial, sans-serif;
 }

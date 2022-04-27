@@ -1,3 +1,4 @@
+{% extends 'base.html' %} {% block body %}
 
 <hr>
 <h1> Create An Estimate </h1>
@@ -5,8 +6,20 @@
 <a href="./about.html"> About</a>
 <a href="./estimate.html"> Estimator</a>
 <br>
-<h3> Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-</h3>
+<form action="/estimate" method="POST">
+    <label for="radius">Radius:</label>
+    <input type="number" id="radius" name="radius" autofocus required />
+    <br />
+    <label for="height">Height:</label>
+    <input type="number" id="height" name="height" />
+    <br />
+    <input type="submit" id="submit" value="Enter" />
+    <input type="reset" value="Clear" />
+  </form>
+  <br />
+  <br />
+  {% if Price %}
+    <h2>Your Price Estimate</h2>
+    {{ Price }}
+
+    {% endif %} {% endblock %}
