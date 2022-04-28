@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-price_estimate = [{"price" = ""}]
+
 @app.route('/')
 def index():
     return render_template('index.html', pageTitle = 'Vertical Tank Maintenance')
