@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', pageTitle='About Vertical Tank Maintenance')
+    return render_template('about.html', pageTitle='About VTM')
 
 @app.route('/estimate', methods=['GET', 'POST'])
 def estimator():
@@ -22,14 +22,14 @@ def estimator():
         area_top = pi * (radius*radius)
         area_side = 2*(pi*(radius * height))
         total_area = area_top + area_side
-        total_squarefeet = total_area/144
-        total_materialcost = total_squarefeet * 25
-        total_laborcost = total_squarefeet * 15
-        total_cost = total_materialcost + total_laborcost
+        square_feet = total_area/144
+        material_cost = square_feet * 25
+        labor_cost = square_feet * 15
+        total_cost = material_cost + labor_cost
         total_costestimate = "$" + str(round(total_cost, 2))
         Price = total_costestimate
-        return render_template('estimate.html', pageTitle = 'Price Estimator', Price = Price)
-    return render_template('estimate.html', pageTitle = 'Price Estimator')
+        return render_template('estimate.html', pageTitle = 'Create An Estimate', Price = Price)
+    return render_template('estimate.html', pageTitle = 'Create An Estimate')
  
 if __name__ == '__main__':
     app.run(debug=True)
