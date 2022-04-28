@@ -1,5 +1,5 @@
-from flask import Flask
-from flask import render_template, request, redirect, url_for
+from flask import Flask, redirect, request, url_for
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -16,19 +16,18 @@ def about():
 def estimator():
     if request.method == 'POST':
         form = request.form
-        radius = int(form['radius'])
-        height = int(form['height'])
-        pi = 3.14
-        area_top = pi * (radius*radius)
-        area_side = 2*(pi*(radius * height))
+        radius = form['radius']
+        height = form['height']
+        area_top = 3.14 * radius**2
+        area_side = 2*3.14*radius*height
         total_area = area_top + area_side
         square_feet = total_area/144
         material_cost = square_feet * 25
         labor_cost = square_feet * 15
         total_cost = material_cost + labor_cost
-        total_costestimate = "$" + str(round(total_cost, 2))
-        Price = total_costestimate
-        return render_template('estimate.html', pageTitle = 'Create An Estimate', Price = Price)
+        total_costestimate = round(total_cost, 2)
+        total_costestimate = str(total_costestimate)
+        return render_template('estimate.html', pageTitle = 'Create An Estimate', Price = total_costestimate)
     return render_template('estimate.html', pageTitle = 'Create An Estimate')
  
 if __name__ == '__main__':
