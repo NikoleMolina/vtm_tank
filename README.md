@@ -6,7 +6,8 @@ Basic structure for starting a Flask project with Jinja templates
 
 2. Rename the directory to reflect the new project name
 
-3. Delete .git folder
+3. Delete .git folder    .
+
 
 4. Create a new virtual environment 
     - Windows:  ```python -m venv ./venv```
